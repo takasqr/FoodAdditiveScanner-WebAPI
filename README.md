@@ -5,15 +5,18 @@
 バックエンドのソースコードです。ソースコードは基本的な機能を備えた、Ver.1 まで公開する予定です。
 
 
-## 構成
+## 技術構成
 
 - AWS VPC
 - AWS Lightsail (SQLServer)
 - AWS Lambda (Typescript)
 - AWS API Gateway (REST API)
+- Cloud Functions for Firebase
 
 API Gateway 以下を VPC を経由させることで通信の安全性を高めています。
 本来は Lambda と SQLServer をそのまま接続させる時はプロキシサーバーを挟まないと、パフォーマンス上の問題があります。ですが、まだそこまでアクセス数が見込めないので、AWS API Gateway のキャッシュを利用しつつ様子を見る予定です。
+
+OCR 機能で Google Cloud の Cloud Vision を利用しています。Cloud Vision を利用するのに相性がよく、手軽だった Firebase を利用しました。
 
 ## ルール
 - ステージング環境のリソース名には`-Staging`と接尾辞を付ける
@@ -24,6 +27,10 @@ API Gateway 以下を VPC を経由させることで通信の安全性を高め
 AWS Lightsail は手軽にサーバーを建てることができるので好きなサービスの一つです。今回は VPC と Lightsail をピア接続させて利用します。
 
 [Amazon Lightsail の外部の AWS リソースを使用するために Amazon VPC ピア接続をセットアップする | Lightsail ドキュメント](https://lightsail.aws.amazon.com/ls/docs/ja_jp/articles/lightsail-how-to-set-up-vpc-peering-with-aws-resources)
+
+SQLServer をインストールして IP アドレスを有効化して Lambda からアクセスします。
+
+[レッスン 2: 別のコンピューターからの接続 | Microsoft SQL ドキュメント](https://learn.microsoft.com/ja-jp/sql/relational-databases/lesson-2-connecting-from-another-computer?view=sql-server-ver16)
 
 ## API のセキュリティ
 
@@ -77,3 +84,24 @@ sam deploy --guided
 
 
 
+## SAM
+
+ローカルで実行する。
+
+```
+sam local start-api
+```
+
+
+
+## ソースコード
+
+- [FoodAdditiveScanner-LP](https://github.com/takasqr/FoodAdditiveScanner-LP)
+- [FoodAdditiveScanner-iOS
+](https://github.com/takasqr/FoodAdditiveScanner-iOS)
+- [FoodAdditiveScanner-Android
+](https://github.com/takasqr/FoodAdditiveScanner-Android)
+- [FoodAdditiveScanner-WebApp
+](https://github.com/takasqr/FoodAdditiveScanner-WebApp)
+- [FoodAdditiveScanner-WebAPI
+](https://github.com/takasqr/FoodAdditiveScanner-WebAPI)
