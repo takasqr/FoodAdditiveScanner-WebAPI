@@ -92,7 +92,9 @@ sam deploy --guided
 sam local start-api
 ```
 
+## トラブル対応履歴
 
+[こちら](https://github.com/takasqr/FoodAdditiveScanner-WebAPI/issues?q=label%3Abug)から確認できます。
 
 ## ソースコード
 
