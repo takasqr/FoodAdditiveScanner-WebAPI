@@ -32,18 +32,6 @@ SQLServer をインストールして IP アドレスを有効化して Lambda �
 
 [レッスン 2: 別のコンピューターからの接続 | Microsoft SQL ドキュメント](https://learn.microsoft.com/ja-jp/sql/relational-databases/lesson-2-connecting-from-another-computer?view=sql-server-ver16)
 
-## API のセキュリティ
-
-| ステータス | 項目 |
-|---|---|
-| 🚧 | Key による認証 |
-| 🚧 | AWS IAM による認証 |
-
-
-| マーク | ステータス |
-|---|---|
-| ✅ | 対応済み |
-| 🚧 | 今後対応予定 |
 
 ## デプロイ方法
 
@@ -68,6 +56,11 @@ sam deploy --guided
 - 本番環境は SAM でテンプレートから自動デプロイ、ステージングは手動で設定しながらテストする
 - API にカスタムドメインを割り当てる
 - API のステージは`v1`から始めて大幅な変更を加える時にバージョンアップする
+
+### API のセキュリティ
+
+- Key による認証
+- AWS IAM による認証
 
 ## Lambda
 
