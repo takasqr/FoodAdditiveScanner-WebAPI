@@ -32,6 +32,14 @@ SQLServer をインストールして IP アドレスを有効化して Lambda �
 
 [レッスン 2: 別のコンピューターからの接続 | Microsoft SQL ドキュメント](https://learn.microsoft.com/ja-jp/sql/relational-databases/lesson-2-connecting-from-another-computer?view=sql-server-ver16)
 
+## Windows Server & SQLServer
+
+Lightsail でたてた Windows Server インスタンス内に、SQLServer をインストールします。
+
+- SQLServer 認証を許可
+- ユーザー作成
+- EXPRESS への IPアドレスでの接続をポート指定
+- ファイヤーウォールの設定
 
 ## デプロイ方法
 
