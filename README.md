@@ -41,6 +41,16 @@ Lightsail でたてた Windows Server インスタンス内に、SQLServer を�
 - EXPRESS への IPアドレスでの接続をポート指定
 - ファイヤーウォールの設定
 
+## Windows Server ファイヤーウォールの設定
+
+1433 ポートを PowerShell コマンドで開ける。
+
+```PowerShell
+New-NetFirewallRule -DisplayName "SQLServer default instance" -Direction Inbound -LocalPort 1433 -Protocol TCP -Action Allow
+```
+
+[SQL Server のアクセスを許可するための Windows ファイアウォールの構成 | Microsoft SQL ドキュメント](https://learn.microsoft.com/ja-jp/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access?view=sql-server-ver16)
+
 ## デプロイ方法
 
 ディレクトリを移動する
@@ -64,6 +74,7 @@ sam deploy --guided
 - 本番環境は SAM でテンプレートから自動デプロイ、ステージングは手動で設定しながらテストする
 - API にカスタムドメインを割り当てる
 - API のステージは`v1`から始めて大幅な変更を加える時にバージョンアップする
+- API Gateway のコンソールからテスト実行できる
 
 ### API のセキュリティ
 
