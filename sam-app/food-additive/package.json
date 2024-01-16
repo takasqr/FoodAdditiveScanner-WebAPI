@@ -13,6 +13,7 @@
     "test": "npm run compile && npm run unit"
   },
   "dependencies": {
+    "@types/tedious": "^4.0.14",
     "esbuild": "^0.14.14",
     "tedious": "^16.6.1"
   },
