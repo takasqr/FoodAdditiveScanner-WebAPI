@@ -29,3 +29,21 @@ exports.get = (offset: string, fetch: string) => {
 
     return sql
 };
+
+exports.post = (foodAdditive: any) => {
+
+    let sql: string = ""
+
+    sql += " INSERT INTO [" + process.env.DB_NAME + "].[dbo].[FoodAdditive] "
+    sql += " (                                   "
+    sql += "   [name]                            "
+    sql += " )                                   "
+    sql += " VALUES                              "
+    sql += " (                                   "
+    sql += "   '" + foodAdditive.name + "'       "
+    sql += " );                                  "
+    sql += "    "
+
+    return sql
+
+}

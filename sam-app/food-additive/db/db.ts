@@ -15,7 +15,7 @@ exports.config = async () => {
        options: {
            encrypt: false,
            database: process.env.DB_NAME,
-           port: process.env.PORT,
+           port: 1433,
            rowCollectionOnRequestCompletion: true
        }
    };
