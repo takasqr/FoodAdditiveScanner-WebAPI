@@ -11,13 +11,53 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
  */
 
 export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+
+    const db = require('./db/db.js');
+    const method = require('./db/method.ts')
+
     try {
-        return {
-            statusCode: 200,
+
+        let response = {
+            statusCode: 500,
             body: JSON.stringify({
-                message: 'food world',
+                message: 'some error happened',
             }),
         };
+
+        console.log(event)
+
+        // SQL を取得
+        if (event.httpMethod === 'GET') {
+
+            const queryStringParameters: any = event.queryStringParameters
+
+            let sql = '';
+
+            let offset = queryStringParameters?.offset ?? ''
+            let fetch = queryStringParameters?.fetch ?? ''
+
+            sql = method.get(offset, fetch)
+    
+            console.log(sql)
+    
+            // DBに接続
+            const config = await db.config();
+
+            const connection = await db.createConnection(config);
+
+            const result = await db.execute(connection, sql, []);
+            
+            // DBへの接続を閉じる
+            connection.close()
+    
+            response = {
+                statusCode: 200,
+                body: JSON.stringify(result)
+            };
+        }
+
+        return response
+
     } catch (err) {
         console.log(err);
         return {
