@@ -40,7 +40,7 @@ exports.post = (foodAdditive: any) => {
     sql += " )                                   "
     sql += " VALUES                              "
     sql += " (                                   "
-    sql += "   '" + foodAdditive.name + "'       "
+    sql += "   @name                             "
     sql += " );                                  "
     sql += "    "
 

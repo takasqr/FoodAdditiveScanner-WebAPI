@@ -71,8 +71,11 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
 
             console.log(sql)
 
+            // パラメータ
             const TYPES = require('tedious').TYPES;
-            const result = await db.execute(connection, sql, []);
+            const params: Param[] = [{ name: 'name', type: TYPES.NVarChar, value: obj.name }]
+
+            const result = await db.execute(connection, sql, params);
     
             console.log('result:', result)
 
