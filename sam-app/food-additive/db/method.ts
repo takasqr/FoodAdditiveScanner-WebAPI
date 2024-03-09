@@ -5,7 +5,11 @@ exports.get = (offset: string, fetch: string) => {
     if (offset.length > 0 && fetch.length > 0) {
 
         sql += " SELECT                                     ";
-        sql += "  [name]                                    ";
+        sql += "  [name],                                   ";
+        sql += "  [descriptionText],                        ";
+        sql += "  [usage],                                  ";
+        sql += "  [type],                                   ";
+        sql += "  [keywords]                                ";
         sql += " FROM                                       ";
         sql += "  [" + process.env.DB_NAME + "].[dbo].[FoodAdditive]       ";
         sql += " ORDER BY                                   ";
@@ -18,7 +22,11 @@ exports.get = (offset: string, fetch: string) => {
         
         // 全件取得
         sql += " SELECT                                     ";
-        sql += "  [name]                                    ";
+        sql += "  [name],                                   ";
+        sql += "  [descriptionText],                        ";
+        sql += "  [usage],                                  ";
+        sql += "  [type],                                   ";
+        sql += "  [keywords]                                ";
         sql += " FROM                                       ";
         sql += "  [" + process.env.DB_NAME + "].[dbo].[FoodAdditive]       ";
         sql += " ORDER BY                                   ";
@@ -36,11 +44,19 @@ exports.post = (foodAdditive: any) => {
 
     sql += " INSERT INTO [" + process.env.DB_NAME + "].[dbo].[FoodAdditive] "
     sql += " (                                   "
-    sql += "   [name]                            "
+    sql += "   [name],                           "
+    sql += "   [descriptionText],                "
+    sql += "   [usage],                          "
+    sql += "   [type],                           "
+    sql += "   [keywords]                        "
     sql += " )                                   "
     sql += " VALUES                              "
     sql += " (                                   "
-    sql += "   @name                             "
+    sql += "   @name,                            "
+    sql += "   @descriptionText,                 "
+    sql += "   @usage,                           "
+    sql += "   @type,                            "
+    sql += "   @keywords                         "
     sql += " );                                  "
     sql += "    "
 
